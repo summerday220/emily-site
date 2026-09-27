@@ -26,7 +26,7 @@ exactly how in four clicks.
 - [Update your resume](#update-your-resume)
 - [Change the colors](#change-the-colors)
 - [Please never put these on the site](#please-never-put-these-on-the-site)
-- [Five things that trip everyone up](#five-things-that-trip-everyone-up)
+- [Six things that trip everyone up](#six-things-that-trip-everyone-up)
 - [When something breaks](#when-something-breaks)
 - [Quick reference](#quick-reference)
 
@@ -52,30 +52,27 @@ your phone.
 
 Here's what's in the folder:
 
-The site is **two pages**:
+The site is **one page with two tabs**, Work and About.
 
-- **index.html** — the home page. Your name, photo, Highlights, Recent
-  work.
-- **about.html** — About, Experience, Education, Languages and tools,
-  and the resume download.
+Clicking a tab swaps the content in the middle. Your header and the
+contact bar never move — nothing reloads, so there's no flicker. The
+address bar still changes to `#about`, so you can send someone straight
+to that tab, and the back button works.
 
-They were one page, but it got long. Splitting it means someone landing
-on your site sees your work first without scrolling past your CV.
+Everything is in **index.html**. There's no second page to keep in
+sync.
 
 | File | What it's for |
 |---|---|
 | **stories.js** | Your stories. This is the one you'll open almost every time. |
-| **index.html** | Home page: name, photo, contact links. |
-| **about.html** | Your bio, jobs, education, tools. |
-| **style.css** | Colors, fonts, spacing — shared by both pages. |
+| **index.html** | The whole page: header, both tabs, contact bar. |
+| **style.css** | Colors, fonts, spacing. |
 | **resume.pdf** | The resume people download. |
 | **Neil.Emily.Resume.web.docx** | The editable version of that resume. |
 | `headshot.jpg` and the story photos | Your images. |
 
-**Two things live on both pages: the menu at the top, and the dark
-contact bar at the bottom.** If you change your email or add a link,
-change it in *both* index.html and about.html so they match. There's a
-note in each file at those spots reminding you.
+You'll also see **about.html** in the folder. It's a two-line file that
+forwards anyone with the old link to the About tab. Leave it alone.
 
 ---
 
@@ -320,7 +317,7 @@ on your site has it. A username link doesn't. Given what you cover,
 that's the difference worth caring about, and you can change or delete
 a username any time without touching your number.
 
-**Then switch it on.** Open **index.html**, find this near the bottom:
+**Then switch it on.** In **index.html**, find this near the bottom:
 
 ```html
 <!--<li><a href="PASTE-YOUR-SIGNAL-LINK-HERE">Signal</a></li>-->
@@ -334,7 +331,7 @@ like:
 <li><a href="https://signal.me/#eu/your-actual-link">Signal</a></li>
 ```
 
-Commit, then do exactly the same in **about.html**.
+That's it — it only exists once now.
 
 ---
 
@@ -343,10 +340,8 @@ Commit, then do exactly the same in **about.html**.
 These live in **index.html**. It looks more intimidating than stories.js,
 but you are only ever changing the words *between* the pointy brackets.
 
-Your bio and jobs are in **about.html**. Your name, photo and the
-contact links under it are in **index.html**.
-
-To change your bio, open **about.html** and find:
+Everything is in **index.html**. Your bio sits inside the About tab —
+search the file for:
 
 ```html
 <section id="about" class="bio">
@@ -370,7 +365,7 @@ the spots you're most likely to want.
 
 ## Add a new job
 
-In **about.html**, find `<section id="experience">`. Copy one of these
+In **index.html**, find `<section id="experience">`. Copy one of these
 blocks and paste it above the others:
 
 ```html
@@ -477,26 +472,28 @@ public page is for.
 
 ---
 
-## Five things that trip everyone up
+## Six things that trip everyone up
 
 **1. "Add files via upload" is not a button.** When you look at your list
 of files, that grey text beside each filename is a *label* describing the
 last change. Clicking it shows you a history page. The button you want is
 **Add file**, up near the green Code button.
 
-**2. Your computer is not the website.** Changing a file in a folder on
+**2. Both tabs live in one file.** Work and About are two blocks inside index.html, not two files. Scroll down past the Highlights and you'll find the About content in the same document.
+
+**3. Your computer is not the website.** Changing a file in a folder on
 your laptop does nothing until you upload it. Editing directly on
 github.com avoids the problem entirely.
 
-**3. Your browser shows you an old copy.** After committing, wait a
+**4. Your browser shows you an old copy.** After committing, wait a
 minute and press **Ctrl+Shift+R** (Cmd+Shift+R on Mac). Nine times out of
 ten "it didn't work" is just a cached page.
 
-**4. Filenames are literal.** `Photo.JPG` and `photo.jpg` are different
+**5. Filenames are literal.** `Photo.JPG` and `photo.jpg` are different
 files as far as the web is concerned. Lowercase, no spaces, and match the
 filename in stories.js exactly.
 
-**5. Browsers rename downloads.** If you download a file and re-upload
+**6. Browsers rename downloads.** If you download a file and re-upload
 it, check it isn't now called `index (1).html`. Rename it back first.
 
 ---
@@ -540,10 +537,10 @@ Every version is saved. Nothing is ever lost. Ask Jaz.
 | Add a highlight with a photo | Upload photo, then stories.js | `1. HIGHLIGHTS` |
 | Swap a photo | Upload with the same filename | — |
 | Change my headshot | Upload as `headshot.jpg` | — |
-| Edit my bio | about.html | `id="about"` |
-| Add a job | about.html | `id="experience"` |
-| Change my email or links | **both** index.html and about.html | top and bottom |
-| Turn on my Signal link | **both** index.html and about.html | the contact bar |
+| Edit my bio | index.html | `id="about"` |
+| Add a job | index.html | `id="experience"` |
+| Change my email or links | index.html | top and bottom |
+| Turn on my Signal link | index.html | the contact bar |
 | Turn on my Signal link | **both** index.html and about.html | the contact bar |
 | Update the resume | Word/Docs → PDF → upload | — |
 | Change colors | style.css | the top |

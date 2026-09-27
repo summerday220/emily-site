@@ -8,9 +8,9 @@ deployment guide.
 ## What's here
 
 ```
-index.html                    home page — hero, highlights, recent work
-about.html                    about, experience, education, tools
-style.css                     colors, type, spacing (shared by both pages)
+index.html                    the whole site — header, Work tab, About tab, contact
+about.html                    two-line redirect for the old /about.html link
+style.css                     colors, type, spacing
 stories.js                    the stories  ← the only file that needs regular edits
 resume.pdf                    the downloadable resume, personal details removed
 Neil.Emily.Resume.web.docx    editable source for that PDF
