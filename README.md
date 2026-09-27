@@ -171,6 +171,32 @@ Fonts, and WHYY's image CDN for the four current highlight photos.
 
 ---
 
+## The resume, and what deliberately isn't on it
+
+`resume.pdf` is not Emily's full resume. Four things were taken out,
+because anything on the site can be downloaded by anyone who finds it:
+
+| Removed | Why |
+|---|---|
+| Home street address | A public page is not the place for where she lives |
+| Phone number | Same, and it invites spam calls |
+| Both references' names and direct phone numbers | Other people's contact details shouldn't go on a public page unless they've agreed to it |
+| The References section entirely | "Available on request" is assumed and dated. Editors ask when they want them. |
+
+Kept: her name, Philadelphia PA, her Gmail, and her X and Instagram
+handles. It now ends on Languages.
+
+This matters a bit more than usual — she covers immigration enforcement
+and policing, beats that occasionally attract people you'd rather not
+hand an address to.
+
+**Her full resume, with the address and references, still exists and is
+what she should send with actual applications.** `resume.pdf` is the
+public copy only. `Neil.Emily.Resume.web.docx` is its editable source;
+if she edits and re-exports, the same four things need to stay out.
+
+---
+
 ## Things to confirm with Emily
 
 - **Job title.** Currently "Suburban reporter for Billy Penn at WHYY." Her

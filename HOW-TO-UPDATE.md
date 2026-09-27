@@ -1,73 +1,120 @@
 # How to update your site
 
-Hi Emily — this is everything you'll ever need to do to keep the site
-current. No coding knowledge assumed. Find the thing you want to do, follow
-the steps.
+Hi Emily. This is everything you'll ever need to keep the site current.
+No coding knowledge assumed. Find the thing you want to do, follow the
+steps.
 
-**The single most reassuring thing to know:** GitHub keeps a copy of every
-version of every file, forever. You cannot permanently break this. If
-something goes wrong there is always an undo, and there's a section at the
-bottom explaining exactly how.
+**The most reassuring thing to know first:** GitHub keeps a copy of every
+version of every file, forever. You cannot permanently break this. There
+is always an undo, and "When something breaks" at the bottom shows you
+exactly how in four clicks.
 
 ---
 
-## The five-minute orientation
+## Contents
 
-Your site is four files that live on github.com. You edit them in your web
-browser — nothing to download, nothing to install, works from any computer
-or your phone.
+- [Start here: how this actually works](#start-here-how-this-actually-works)
+- [The five clicks](#the-five-clicks)
+- [The two rules](#the-two-rules)
+- [Add a story to Recent work](#add-a-story-to-recent-work)
+- [Add a highlight, with a photo](#add-a-highlight-with-a-photo)
+- [Photos: the one thing worth knowing](#photos-the-one-thing-worth-knowing)
+- [Change your headshot](#change-your-headshot)
+- [Edit your bio, job title or links](#edit-your-bio-job-title-or-links)
+- [Add a new job](#add-a-new-job)
+- [Update your resume](#update-your-resume)
+- [Change the colors](#change-the-colors)
+- [Please never put these on the site](#please-never-put-these-on-the-site)
+- [Five things that trip everyone up](#five-things-that-trip-everyone-up)
+- [When something breaks](#when-something-breaks)
+- [Quick reference](#quick-reference)
 
-| File | What's in it |
+---
+
+## Start here: how this actually works
+
+Your site lives on **github.com**. GitHub is just a place that stores
+files and serves them to the internet as a website. Your repository — or
+"repo" — is the folder holding them.
+
+**The single most important thing to understand:**
+
+> Your website is the copy on GitHub. A copy on your laptop is not the
+> website. Editing a file on your computer changes nothing until you
+> upload it.
+
+Almost every "I changed it but nothing happened" moment comes from this.
+The simplest way to avoid it entirely is to **edit directly on
+github.com in your browser** — then there's only ever one copy. That's
+what the steps below do. Nothing to install, works from any computer or
+your phone.
+
+Here's what's in the folder:
+
+| File | What it's for |
 |---|---|
-| **stories.js** | Your stories. This is the one you'll open 95% of the time. |
+| **stories.js** | Your stories. This is the one you'll open almost every time. |
 | **index.html** | Your name, bio, jobs, education, contact links. |
-| **style.css** | Colors and fonts. You'll probably never touch it. |
-| **resume.pdf** | The downloadable resume. |
+| **style.css** | Colors, fonts, spacing. You'll probably never touch it. |
+| **resume.pdf** | The resume people download. |
+| **Neil.Emily.Resume.web.docx** | The editable version of that resume. |
+| `headshot.jpg` and the story photos | Your images. |
 
-Every edit follows the same five clicks:
+---
+
+## The five clicks
+
+Every text edit works the same way:
 
 1. Go to your repository on **github.com**
-2. Click the file you want to change
-3. Click the **pencil icon** in the top right
+2. Click the name of the file you want to change
+3. Click the **pencil icon**, top right of the file
 4. Make your change
-5. Scroll down, click the green **Commit changes** button, then **Commit
-   changes** again in the popup
+5. Scroll down, click green **Commit changes**, then **Commit changes**
+   again in the popup that appears
 
-Your live site updates about a minute later. That's it. That's the whole
-system.
+Leave "Commit directly to the `main` branch" selected — it's the default,
+and it's what makes the change go live.
+
+Wait about a minute, then look at your site. **If you don't see the
+change, press Ctrl+Shift+R** (or Cmd+Shift+R on a Mac). That forces your
+browser to fetch the new version instead of the one it saved earlier.
+This catches people out constantly.
+
+That's the whole system.
 
 ---
 
 ## The two rules
 
-Almost every problem is one of these two things.
+Nearly every problem is one of these.
 
 **Rule 1 — every line ends with a comma, except the last one in a block.**
 
 ```
     title: "My headline",        ← comma
     url: "https://...",          ← comma
-    medium: "article"            ← no comma, it's last
+    medium: "article"            ← no comma, it's the last one
 ```
 
 **Rule 2 — text goes inside "double quotes."**
 
 ```
     outlet: "WHYY News",         ← right
-    outlet: WHYY News,           ← wrong, will break
+    outlet: WHYY News,           ← wrong, this will break the page
 ```
 
-If your page ever goes blank, it's one of these. Scroll to "When something
-breaks" at the bottom.
+If the page goes blank or the stories vanish, it's one of these. Don't
+hunt for it — just undo and try again. See the bottom of this file.
 
 ---
 
-## Adding a story to Recent work
+## Add a story to Recent work
 
-Open **stories.js**. Scroll past the Highlights section to the one labelled
+Open **stories.js**. Scroll past Highlights to the part labelled
 `2. STORIES`.
 
-Copy this and paste it right after the `const STORIES = [` line:
+Copy this, and paste it directly after the `const STORIES = [` line:
 
 ```
   {
@@ -80,54 +127,68 @@ Copy this and paste it right after the `const STORIES = [` line:
   },
 ```
 
-Then change the values to match your story. A few notes:
+Change the values to match your story. Notes:
 
-- **topic** is the little label above the headline. Use whatever you like —
+- **topic** is the small label above the headline. Use whatever you like —
   "Weather", "Community", "Arts & Entertainment". Delete the whole line if
   you don't want one.
-- **medium** must be one of: `"article"`, `"audio"`, `"photo"`, `"essay"`,
-  `"video"`. This controls the filter buttons.
-- **For a radio piece**, add a runtime line so the little play triangle
-  shows up:
+- **medium** must be one of: `"article"`, `"audio"`, `"photo"`,
+  `"essay"`, `"video"`.
+- **For a radio piece**, add a runtime so the little play triangle shows:
   ```
     medium: "audio",
     listen: "1:53"
   ```
 
-Newest story goes at the top. Commit, done.
+Newest story at the top. Commit, done.
 
-### About those filter buttons
-
-They build themselves. Right now the site shows All / Articles / Audio,
-because those are the only two mediums you've used. The moment you add your
-first story with `medium: "photo"`, a **Photos** button appears on its own.
-Nothing to set up.
+**The filter buttons build themselves.** Right now the site shows All /
+Articles / Audio, because those are the only two kinds you've posted. The
+first time you add a story with `medium: "photo"`, a **Photos** button
+appears on its own. Nothing to set up.
 
 ---
 
-## Adding a highlight (the big ones with photos)
+## Add a highlight, with a photo
 
-Highlights are the showcase pieces at the top — photo, a couple of lines,
-links to the story. Keep it to about four to six so they stay special.
+Highlights are the showcase pieces at the top, with a photo and a couple
+of lines. Keep it to about four to six so they stay special.
 
-**Step 1: get the photo onto GitHub.**
+### Step 1 — get the photo
 
-1. Save the photo to your computer. Give it a simple name, all lowercase,
-   no spaces — `murrow-feature.jpg`, not `Screen Shot 2026-10-02 at
-   4.51.09 PM.png`
-2. On your repository's main page, click **Add file** → **Upload files**
-3. Drag the photo in, click **Commit changes**
+Open your published story, right-click the main photo, **Save image as**,
+and save it somewhere you'll find it.
 
-**Step 2: add the block.**
+*If right-click doesn't offer to save it:* right-click and choose **Open
+image in new tab** first, then save it from there. Some sites block the
+direct save.
 
-Open **stories.js**, find the section labelled `1. HIGHLIGHTS`, and paste
+Name it something short and plain, lowercase, no spaces:
+`bluegrass.jpg`, not `Screen Shot 2026-10-02 at 4.51.09 PM.png`.
+
+**Check the file size before you upload it.** Right-click the file on
+your computer → Properties (Windows) or Get Info (Mac). If it's over
+about 400 KB, see the photos section below — there's an easy fix.
+
+### Step 2 — upload it to GitHub
+
+On your repository's main page:
+
+1. Click **Add file** (top right, next to the green Code button) →
+   **Upload files**
+2. Drag the photo in
+3. Scroll down, **Commit changes**
+
+### Step 3 — add the block
+
+Open **stories.js**, find the part labelled `1. HIGHLIGHTS`, and paste
 this right after `const HIGHLIGHTS = [`:
 
 ```
   {
     title: "Paste your headline here",
     url: "https://whyy.org/articles/paste-the-link-here/",
-    image: "murrow-feature.jpg",
+    image: "bluegrass.jpg",
     alt: "Short description of what's in the photo",
     outlet: "WHYY News",
     date: "October 2026",
@@ -138,20 +199,21 @@ this right after `const HIGHLIGHTS = [`:
   },
 ```
 
-The `image` value is just the filename you uploaded, in quotes.
+The `image` value is just the filename you uploaded, in quotes. Nothing
+else — no `https://`, no folder name.
 
-**About `alt`:** this is the description a blind reader's screen reader
-announces, and what shows if the image fails to load. One short sentence.
-"Residents hold signs at a township council meeting," not "photo" or "image
-of story."
+**About `alt`:** this is what a blind reader's screen reader says out
+loud, and what appears if the image ever fails to load. One short
+sentence describing what's actually in the frame. *"Residents hold signs
+at a township council meeting"* — not *"photo"* or *"image of my story."*
 
-**About `dek`:** this is yours. A line or two in your voice. It's the thing
-that makes someone click.
+**About `dek`:** this one's yours. A line or two in your own voice. It's
+what makes someone click.
 
-**Two optional extras.** Add either line to any highlight:
+**Two optional extras** you can add to any highlight:
 
 ```
-    award: "2026 Regional Murrow Award — Excellence in Sound",
+    award: "2026 Regional Murrow Award for Excellence in Sound",
     with: "Kenny Cooper",
 ```
 
@@ -159,37 +221,76 @@ that makes someone click.
 it. `with` credits a co-byline in the small grey line underneath. Leave
 either out and it simply doesn't appear.
 
-**A story can be in both lists.** If it's in Highlights and in Stories, the
-page shows it once, up top, and skips the duplicate below. You don't have to
-manage that.
+**A story can be in both lists.** If it's in Highlights and in Stories,
+the page shows it once, up top, and drops the duplicate below. You don't
+have to manage that.
 
 ---
 
-## Changing a photo
+## Photos: the one thing worth knowing
 
-Same two steps as above. Upload the new photo (**Add file** → **Upload
-files**), then open stories.js and change the `image:` line to the new
-filename.
+**Every photo on your site is your own copy, stored in your repository.**
+That's deliberate. Earlier versions pointed at WHYY's image servers, and
+the trouble with that is silent failure: if WHYY ever moves or renames a
+file, the photo goes blank and *nobody tells you*. Visitors see an empty
+box and you have no idea. Your own copy can't do that.
 
-If you upload a photo with the exact same name as an old one, it replaces it
-and you don't need to edit anything.
+So when you add a highlight, always save the image and upload it. Never
+paste a URL from another site.
 
-### Note on the four photos that are there now
+### Save them as JPEG, not PNG
 
-The four current highlight photos point at WHYY's image server rather than
-living on your site. They work, but if WHYY ever moves or renames one of
-those files, that photo goes blank without warning.
+This one actually matters. PNG is lossless — brilliant for screenshots
+and diagrams, wasteful for photographs. Real numbers from your own site:
 
-When you have a spare twenty minutes: save those four images, upload them
-the way described above, and change each `image:` line to the filename. Then
-nothing outside your control can break them.
+| | As PNG | As JPEG |
+|---|---|---|
+| bluegrass | 1,052 KB | **101 KB** |
+| garden-of-reflection | 1,173 KB | **131 KB** |
+
+Same picture, no visible difference, one-tenth the weight. Those two PNGs
+were heavier than the rest of the entire site put together, and on a
+phone that's a slow-loading page.
+
+**So:** if a photo saves as `.png` and it's over about 400 KB, open it in
+any image editor (Windows Photos, Mac Preview, or photopea.com which is
+free in a browser) and re-save as JPEG. Then upload that.
+
+### One sneaky thing to watch for
+
+A file can be *named* `.jpg` but not actually be a JPEG inside. This
+happens when you save an image from a site that serves a newer format
+called AVIF or WebP. It usually still displays, but it can break in older
+browsers, and it will confuse LinkedIn, Word and email if you reuse it.
+
+You can't tell by looking. If a photo behaves oddly anywhere, that's
+usually why — open it and re-save it as JPEG and the problem goes away.
+
+### What size to aim for
+
+Roughly **800 to 1000 pixels wide** is ideal. The photos display at about
+440 pixels, and doubling that keeps them sharp on high-resolution
+screens. Bigger than 1200 is just slower with nothing to show for it.
 
 ---
 
-## Editing your bio, name, or contact links
+## Change your headshot
 
-These live in **index.html**. It looks more intimidating than stories.js but
-you're only ever changing the words between the `>` and `<` symbols.
+Same as any photo. Save the new one as `headshot.jpg`, upload it via
+**Add file → Upload files**, commit.
+
+Because the filename is identical, it replaces the old one and you don't
+need to edit anything else.
+
+A **square** photo works best — it's displayed as a circle, so anything
+tall or wide gets cropped at the sides.
+
+---
+
+## Edit your bio, job title or links
+
+These live in **index.html**. It looks more intimidating than stories.js,
+but you are only ever changing the words *between* the pointy brackets.
 
 To change your bio, find this near the middle:
 
@@ -197,26 +298,26 @@ To change your bio, find this near the middle:
 <section id="about" class="bio">
 ```
 
-Below it are three paragraphs, each wrapped in `<p>` and `</p>`. Change the
-words inside. Leave the `<p>` and `</p>` alone.
+Below it are paragraphs, each wrapped in `<p>` and `</p>`. Change the
+words inside. Leave the tags alone.
 
 ```html
 <p>I'm a bilingual multimedia journalist covering...</p>
-     ↑ change everything in here            ↑ leave these tags
+     ↑ change everything in here             ↑ don't touch these
 ```
 
-Same idea for your email, your job title, the line under your name — find
-the words, change the words, leave the pointy brackets alone.
+Same idea for your email, your job title, the line under your name. Find
+the words, change the words, leave the brackets.
 
-I've left comments throughout the file that start with `<!-- EMILY:` marking
+I've left notes throughout the file starting with `<!-- EMILY:` marking
 the spots you're most likely to want.
 
 ---
 
-## Adding a new job to Experience
+## Add a new job
 
-In **index.html**, find `<section id="experience">`. Copy one of the blocks
-that looks like this and paste it above the others:
+In **index.html**, find `<section id="experience">`. Copy one of these
+blocks and paste it above the others:
 
 ```html
       <li>
@@ -232,101 +333,154 @@ Change the four bits of text. Everything else stays as it is.
 
 ---
 
-## Updating your resume
+## Update your resume
 
 There are two versions on purpose:
 
-- **Your full resume** — with your address, phone and references. Keep using
-  this for actual job applications. Don't put it on the site.
-- **`Neil.Emily.Resume.web.docx`** — the same resume with your home address,
-  your phone number, and Madhu's and Maria's direct phone numbers taken out,
-  because anyone on the internet can download whatever's on the site. The
-  References section reads "Available on request," which is standard and
-  what hiring editors expect.
+- **Your full resume** — with your address, phone and references. Keep
+  using this for actual applications. It should never go on the site.
+- **`Neil.Emily.Resume.web.docx`** — the public copy, and the file you
+  edit when something changes.
+
+Four things were taken out of the public copy, because anyone on the
+internet can download whatever is on the site:
+
+| Removed | Why |
+|---|---|
+| Your home address | A public page isn't the place for where you live |
+| Your phone number | Same, plus it invites spam calls |
+| Your references' direct phone numbers | Other people's contact details shouldn't be public unless they've agreed to it |
+| The References section itself | Editors ask when they want them, and "available on request" is assumed — it's a line that says nothing |
+
+What's left: your name, Philadelphia PA, your Gmail, and your X and
+Instagram handles. It ends on Languages.
 
 To update the web one:
 
 1. Open `Neil.Emily.Resume.web.docx` and make your change
-2. **Word:** File → Save As → change the format to **PDF**
+2. **Word:** File → Save As → change format to **PDF**
    **Google Docs:** File → Download → **PDF Document**
 3. Name it exactly `resume.pdf` — lowercase, no spaces
-4. On GitHub: **Add file** → **Upload files**, drag it in, **Commit
-   changes**. Same filename means it replaces the old one automatically.
+4. Upload it via **Add file → Upload files**. Same filename replaces the
+   old one automatically.
 
-**Don't paste your address or phone back in.** They were removed on purpose.
+**Don't paste your address, your phone, or the references back in.** If
+you want a version with references for a specific application, make that
+one separately and send it by email — don't put it on the site.
 
 ### The one annoying part
 
-Your Experience section on the page is a second copy of your resume. A new
-job means changing it in two places — the page and the PDF.
+The Experience section on the page is a second copy of your resume, so a
+new job means changing it in two places.
 
 My suggestion: **update the page first, always.** It's a two-minute edit
-from any browser, and it's what people actually read — most visitors never
-click download. Refresh the PDF when you're job hunting and it matters.
+from any browser, and it's what people actually read — most visitors
+never click download. Refresh the PDF when you're job hunting and it
+matters.
 
 ---
 
-## Changing the colors
+## Change the colors
 
-In **style.css**, right at the top:
+Right at the top of **style.css**:
 
 ```css
---indigo:#243a6b;   headings, links, the dark band at the bottom
---gold:#c9891a;     the accent rules and underlines
+--indigo:#243a6b;     headings, links, the dark band at the bottom
+--gold:#c9891a;       the accent rules and underlines
+--gold-text:#8a5c0d;  the darker gold used for the award lines
 ```
 
-Change a color code there and it changes everywhere on the site. If you want
-to try a color, google "hex color picker," find one you like, and paste the
-`#` code in.
+Change a code there and it changes everywhere on the site. If you want to
+try a color, search "hex color picker," find one you like, paste in the
+`#` code.
+
+There are two golds because the bright one isn't dark enough to read as
+small text. If you change one, change both to match.
+
+---
+
+## Please never put these on the site
+
+Anything on the site can be downloaded by anyone who finds it, and given
+that you cover immigration enforcement and policing, that's worth being
+deliberate about.
+
+Keep off the site:
+
+- **Your home address.** It was removed from the web resume on purpose.
+- **Your phone number.** Same. Email is the right public contact.
+- **Other people's contact details**, unless they've agreed to being
+  listed publicly. This is why your references' phone numbers aren't in
+  the web resume.
+
+Email, work handles and professional links are all fine. That's what a
+public page is for.
+
+---
+
+## Five things that trip everyone up
+
+**1. "Add files via upload" is not a button.** When you look at your list
+of files, that grey text beside each filename is a *label* describing the
+last change. Clicking it shows you a history page. The button you want is
+**Add file**, up near the green Code button.
+
+**2. Your computer is not the website.** Changing a file in a folder on
+your laptop does nothing until you upload it. Editing directly on
+github.com avoids the problem entirely.
+
+**3. Your browser shows you an old copy.** After committing, wait a
+minute and press **Ctrl+Shift+R** (Cmd+Shift+R on Mac). Nine times out of
+ten "it didn't work" is just a cached page.
+
+**4. Filenames are literal.** `Photo.JPG` and `photo.jpg` are different
+files as far as the web is concerned. Lowercase, no spaces, and match the
+filename in stories.js exactly.
+
+**5. Browsers rename downloads.** If you download a file and re-upload
+it, check it isn't now called `index (1).html`. Rename it back first.
 
 ---
 
 ## When something breaks
 
-**The page is blank, or the stories are gone.**
+### Just undo it
 
-Almost always a missing comma or a missing quote mark in stories.js. Go back
-to the file, click the pencil, and look carefully at the block you just
-added. Compare it to the ones around it.
-
-**Just undo it instead.**
-
-Faster and always works:
+Faster than debugging, and it always works:
 
 1. Go to your repository
-2. Click **Commits** (near the top, it shows a number and a clock icon)
+2. Click **Commits** near the top (it shows a number and a clock icon)
 3. Find your most recent change in the list
 4. Click the **`...`** on the right → **Revert**
 5. Confirm
 
-Your site goes back to exactly how it was a minute later. Then try the edit
-again.
+Your site goes back to exactly how it was, about a minute later. Then try
+the edit again more slowly.
 
-**The photo isn't showing.**
+### Or work out what happened
 
-Check the filename matches exactly, including capital letters and the
-extension. `Photo.JPG` and `photo.jpg` are different files as far as the web
-is concerned.
+| What you see | What it usually is |
+|---|---|
+| Page blank, or stories gone | A missing comma or quote mark in stories.js. Undo. |
+| A photo isn't showing | Filename doesn't match `stories.js` exactly, including capitals |
+| Page looks like plain unstyled text | `style.css` didn't upload, or got renamed |
+| Change isn't appearing | Wait a minute, then Ctrl+Shift+R |
+| Site loads really slowly | A photo is too big. Check for anything over 400 KB. |
 
-**A change isn't showing up on the live site.**
+### Still stuck?
 
-Give it two minutes, then refresh with **Cmd+Shift+R** (Mac) or
-**Ctrl+Shift+R** (Windows). That forces your browser to fetch the new
-version instead of the one it saved.
-
-**Still stuck?**
-
-Every version is saved. Nothing is lost. Ask Jaz.
+Every version is saved. Nothing is ever lost. Ask Jaz.
 
 ---
 
 ## Quick reference
 
-| I want to... | File | Section |
+| I want to... | Where | Section |
 |---|---|---|
 | Add a recent story | stories.js | `2. STORIES` |
-| Add a highlight with a photo | stories.js | `1. HIGHLIGHTS` |
-| Change a photo | Upload it, then stories.js | the `image:` line |
+| Add a highlight with a photo | Upload photo, then stories.js | `1. HIGHLIGHTS` |
+| Swap a photo | Upload with the same filename | — |
+| Change my headshot | Upload as `headshot.jpg` | — |
 | Edit my bio | index.html | `id="about"` |
 | Add a job | index.html | `id="experience"` |
 | Change my email or links | index.html | top and bottom |
