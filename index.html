@@ -37,17 +37,16 @@
       <h1><span>Emily</span><span>Neil</span></h1>
       <p class="role">Bilingual multimedia journalist</p>
       <p class="beat">Suburban reporter for Billy Penn at WHYY, covering Bucks and Montgomery counties. Reporting in the Philadelphia region since 2018, in English and Spanish.</p>
-      <p class="award">Two-time winner, 2026 Regional Edward R. Murrow Awards for feature reporting</p>
+      <p class="award">Winner of two <a href="https://whyy.org/articles/murrow-awards-2026-reporting/">2026 Regional Edward R. Murrow Awards</a> — Excellence in Sound, and Sports Reporting</p>
       <ul class="contact-line">
         <li><a href="mailto:emilybneil@gmail.com">emilybneil@gmail.com</a></li>
         <li><a href="https://twitter.com/E_B_Neil">@E_B_Neil</a></li>
         <li><a href="https://www.linkedin.com/in/emily-neil-283810126/">LinkedIn</a></li>
       </ul>
     </div>
-    <!-- EMILY: save your headshot next to this file as headshot.jpg,
-         then delete the <div> line below and uncomment the <img> line. -->
-    <!-- <img class="headshot" src="headshot.jpg" alt="Emily Neil"> -->
-    <div class="headshot">headshot.jpg</div>
+    <!-- EMILY: to change your photo, upload the new one and change
+         the filename below. Keep the rest of the line as it is. -->
+    <img class="headshot" src="headshot.jpg" alt="Emily Neil" width="600" height="600">
   </header>
 
   <div class="gold-rule"></div>
@@ -208,12 +207,14 @@
           ${h.image ? `<img src="${esc(h.image)}" alt="${esc(h.alt || '')}" loading="lazy">` : ''}
         </div>
         <div class="highlight-text">
+          ${h.award ? `<p class="highlight-award">${esc(h.award)}</p>` : ''}
           ${h.topic ? `<p class="story-topic">${esc(h.topic)}</p>` : ''}
           <h3 class="highlight-title">${esc(h.title)}</h3>
           ${h.dek ? `<p class="highlight-dek">${esc(h.dek)}</p>` : ''}
           <p class="story-meta">
             <span>${esc(h.outlet)}</span>
             <span>${esc(h.date)}</span>
+            ${h.with ? `<span>with ${esc(h.with)}</span>` : ''}
             ${h.listen ? `<span class="listen">Listen ${esc(h.listen)}</span>` : ''}
           </p>
         </div>

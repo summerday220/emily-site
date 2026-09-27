@@ -148,6 +148,17 @@ of story."
 **About `dek`:** this is yours. A line or two in your voice. It's the thing
 that makes someone click.
 
+**Two optional extras.** Add either line to any highlight:
+
+```
+    award: "2026 Regional Murrow Award — Excellence in Sound",
+    with: "Kenny Cooper",
+```
+
+`award` puts a gold line above the headline — your two Murrow winners use
+it. `with` credits a co-byline in the small grey line underneath. Leave
+either out and it simply doesn't appear.
+
 **A story can be in both lists.** If it's in Highlights and in Stories, the
 page shows it once, up top, and skips the duplicate below. You don't have to
 manage that.

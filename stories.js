@@ -38,9 +38,41 @@
    alt:    a short description of the photo for screen readers
            and for when an image fails to load.
    dek:    your line or two about the story.
+   award:  optional — shows a gold award line above the headline.
+           Delete the line on stories that didn't win anything.
+   with:   optional — a co-byline, e.g. "Kenny Cooper".
    ============================================================ */
 
 const HIGHLIGHTS = [
+
+  {
+    title: "'Music from the heart': Bluegrass tradition blossoms at a family-owned music shop in Bucks County",
+    url: "https://whyy.org/articles/bucks-county-folk-music-shop-bluegrass-tradition/",
+    image: "https://d1fw4rghwibahr.cloudfront.net/wp-content/uploads/2025/01/ben-jarnutowski-banjo-en-2-010325.jpg",
+    alt: "Ben Jarnutowski plays banjo at the music shop.",
+    outlet: "WHYY News",
+    date: "January 2025",
+    topic: "Arts & Entertainment",
+    medium: "audio",
+    listen: "4:58",
+    award: "2026 Regional Murrow Award — Excellence in Sound",
+    dek: "In an on-demand economy, the kind of experience this shop offers is rare — and it has grown a thriving bluegrass community across the region."
+  },
+
+  {
+    title: "Suburban Philadelphia skaters find community in roller derby: 'The harder you hit them, the more you love them'",
+    url: "https://whyy.org/articles/roller-derby-suburbs-community/",
+    image: "https://whyy.org/wp-content/uploads/2025/05/roller-derby-stills-KP-050225-08.jpg",
+    alt: "The Brandywine Roller Derby team at a Tuesday evening practice.",
+    outlet: "WHYY News",
+    date: "May 2025",
+    topic: "Community",
+    medium: "audio",
+    listen: "3:24",
+    award: "2026 Regional Murrow Award — Sports Reporting",
+    with: "Kenny Cooper",
+    dek: "Somewhere behind the bruises and the collisions, skaters in Bucks, Chester and Montgomery counties find acceptance in a full-contact sport."
+  },
 
   {
     title: "Upper Darby restricts collaboration with ICE in sweeping ordinance",
@@ -80,23 +112,7 @@ const HIGHLIGHTS = [
     dek: "Twenty-five years on, first responders and the people who lost someone gathered in Lower Makefield to say the names out loud again."
   },
 
-  {
-    title: "Nor'easter hits Philadelphia region, bringing high waves, coastal flooding to N.J. and Delaware",
-    url: "https://whyy.org/articles/philadelphia-new-jersey-delaware-noreaster-coastal-flooding-high-waves-winds/",
-    image: "https://d1fw4rghwibahr.cloudfront.net/wp-content/uploads/2026/09/noreaster-atlantic-city-11-1024x683.jpeg",
-    alt: "A sign stands in floodwater along the New Jersey shore during a nor'easter.",
-    outlet: "WHYY News",
-    date: "September 2026",
-    topic: "Weather",
-    medium: "article",
-    dek: "A state of emergency across eight New Jersey counties, voluntary evacuations in shore towns, and water where the road should have been."
-  }
 
-  /* ---------------------------------------------------------
-     EMILY — your two 2026 Regional Murrow features should go
-     at the top of this list. Copy a block above, swap in the
-     headline, link, photo and your line or two about it.
-     --------------------------------------------------------- */
 
 ];
 
