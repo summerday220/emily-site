@@ -39,8 +39,11 @@ a{color:inherit}
 /* Stops a paragraph ending on a single stranded word, and keeps
    short blocks from breaking at an awkward place. Ignored by
    older browsers, which simply wrap as before. */
-p,li,h1,h2,h3{text-wrap:pretty}
-h1,h2,h3,.award,.beat,.contact-block p{text-wrap:balance}
+/* pretty = fill the line, but never strand one word on the last
+   line. balance = even out the lines, which suits short display
+   text but makes a long headline stop short of the column. */
+p,li,h3{text-wrap:pretty}
+h1,h2,.award,.beat,.contact-block p{text-wrap:balance}
 
 .skip{
   position:absolute;left:-9999px;
@@ -124,8 +127,18 @@ section{padding:62px 0 0}
   margin:0 0 22px;
 }
 .section-title.stacked{margin-top:52px}
-.bio p{max-width:66ch;margin:0 0 16px}
-.bio p:first-of-type{font-size:1.14rem}
+/* Two columns, so the prose fills the page width the way the
+   Highlights grid above it does, while each line stays a
+   readable length. One column on narrow screens. */
+.bio-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:0 46px;
+  align-items:start;
+}
+.bio-grid p{margin:0 0 16px}
+.bio-grid p:last-child{margin-bottom:0}
+.bio .lede{font-size:1.14rem}
 
 /* ---------------- highlights ---------------- */
 .highlights{
@@ -201,12 +214,14 @@ section{padding:62px 0 0}
   color:var(--indigo);
   margin:0 0 6px;
 }
+/* Headlines run the width of the list. A max-width here would
+   wrap them early and leave a gap down the right-hand side. */
 .story-title{
   font-family:"Libre Franklin",system-ui,sans-serif;
   font-size:1.1rem;font-weight:600;line-height:1.36;
-  margin:0;max-width:64ch;
+  margin:0;
 }
-.story-dek{color:var(--meta);font-size:1rem;margin:7px 0 0;max-width:66ch}
+.story-dek{color:var(--meta);font-size:1rem;margin:7px 0 0}
 .story-meta{
   font-family:"Libre Franklin",system-ui,sans-serif;
   font-size:.8rem;color:var(--meta);
@@ -294,6 +309,8 @@ section{padding:62px 0 0}
 @media (max-width:860px){
   .hero{grid-template-columns:200px minmax(0,1fr);gap:34px}
   .headshot{width:200px;height:200px}
+  .bio-grid{grid-template-columns:1fr;gap:0}
+  .bio-grid p:last-child{margin-bottom:16px}
 }
 @media (max-width:680px){
   body{font-size:17px}
