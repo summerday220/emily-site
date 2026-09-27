@@ -1,19 +1,26 @@
 /* ============================================================
    Emily Neil — site styles
 
-   The colors below are the whole palette. Change a value here
-   and it changes everywhere it's used on the page.
+   Shared by index.html and about.html. Change a colour here and
+   it changes on both pages.
+
+   The palette comes from the headshot. Its background sits at
+   hue 200 (cool) and her skin at hue 21 (warm) — near-opposite
+   on the colour wheel, which is why the photo reads well. The
+   site borrows that same pairing, at a lower saturation than
+   the photo so the photography stays the most colourful thing
+   on the page.
    ============================================================ */
 
 :root{
-  --indigo:#243a6b;        /* headings, links, the dark band  */
-  --indigo-deep:#1a2b51;   /* hover state for the button      */
-  --gold:#c9891a;          /* the accent — rules, underlines  */
-  --gold-text:#8a5c0d;     /* darker gold, readable as text   */
+  --primary:#284858;       /* headings, links                 */
+  --primary-deep:#1d3744;  /* the dark band at the bottom     */
+  --accent:#ab633f;        /* rules, underlines, the marks    */
+  --accent-text:#8a4c2e;   /* darker, for the accent as text  */
   --ink:#1c2431;           /* body text                       */
   --meta:#616b79;          /* dates, outlets, quieter text    */
   --rule:#dde1e8;          /* hairlines between items         */
-  --surface:#f4f5f8;       /* photo and headshot backgrounds  */
+  --surface:#f4f5f8;       /* image placeholders              */
   --paper:#ffffff;         /* page background                 */
 }
 
@@ -31,14 +38,13 @@ body{
   font-family:"Source Serif 4",Georgia,serif;
   font-size:18px;
   line-height:1.65;
+  display:flex;flex-direction:column;min-height:100vh;
 }
-.wrap{max-width:980px;margin:0 auto;padding:0 28px}
+.wrap{max-width:980px;margin:0 auto;padding:0 28px;width:100%}
+main{flex:1}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
-/* Stops a paragraph ending on a single stranded word, and keeps
-   short blocks from breaking at an awkward place. Ignored by
-   older browsers, which simply wrap as before. */
 /* pretty = fill the line, but never strand one word on the last
    line. balance = even out the lines, which suits short display
    text but makes a long headline stop short of the column. */
@@ -47,7 +53,7 @@ h1,h2,.award,.beat,.contact-block p{text-wrap:balance}
 
 .skip{
   position:absolute;left:-9999px;
-  background:var(--indigo);color:#fff;
+  background:var(--primary);color:#fff;
   padding:10px 16px;text-decoration:none;
   font-family:"Libre Franklin",system-ui,sans-serif;font-size:.9rem;
 }
@@ -56,22 +62,25 @@ h1,h2,.award,.beat,.contact-block p{text-wrap:balance}
 /* ---------------- top nav ---------------- */
 .topnav{
   font-family:"Libre Franklin",system-ui,sans-serif;
-  display:flex;justify-content:space-between;align-items:center;
+  display:flex;justify-content:flex-end;
   gap:20px;flex-wrap:wrap;
-  padding:20px 0;font-size:.9rem;
+  padding:22px 0;font-size:.9rem;
 }
-.topnav .mark{font-weight:700;letter-spacing:-.01em}
 .topnav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0}
-.topnav a{color:var(--meta);text-decoration:none}
-.topnav a:hover,.topnav a:focus-visible{color:var(--indigo)}
+.topnav a{color:var(--meta);text-decoration:none;padding-bottom:2px}
+.topnav a:hover,.topnav a:focus-visible{color:var(--primary)}
+.topnav a[aria-current="page"]{
+  color:var(--primary);font-weight:600;
+  border-bottom:2px solid var(--accent);
+}
 
-/* ---------------- hero ---------------- */
+/* ---------------- home hero ---------------- */
 .hero{
   display:grid;
   grid-template-columns:260px minmax(0,1fr);
   gap:46px;
   align-items:center;
-  padding:30px 0 0;
+  padding:26px 0 0;
 }
 .headshot{
   width:260px;height:260px;
@@ -87,7 +96,7 @@ h1,h2,.award,.beat,.contact-block p{text-wrap:balance}
   line-height:.95;
   letter-spacing:-.035em;
   margin:0;
-  color:var(--indigo);
+  color:var(--primary);
 }
 .role{
   font-family:"Libre Franklin",system-ui,sans-serif;
@@ -101,35 +110,51 @@ h1,h2,.award,.beat,.contact-block p{text-wrap:balance}
 .award{
   font-family:"Libre Franklin",system-ui,sans-serif;
   font-size:.88rem;font-weight:600;
-  color:var(--indigo);
+  color:var(--primary);
   margin:18px 0 0;
   padding:0 0 0 13px;
-  border-left:3px solid var(--gold);
+  border-left:3px solid var(--accent);
 }
-.award a{color:inherit;text-decoration:none;border-bottom:1px solid var(--gold)}
-.award a:hover,.award a:focus-visible{color:var(--gold-text)}
+.award a{color:inherit;text-decoration:none;border-bottom:1px solid var(--accent)}
+.award a:hover,.award a:focus-visible{color:var(--accent-text)}
 .contact-line{
   font-family:"Libre Franklin",system-ui,sans-serif;
   font-size:.92rem;
   display:flex;flex-wrap:wrap;gap:10px 20px;
   margin:18px 0 0;padding:0;list-style:none;
 }
-.contact-line a{color:var(--indigo);text-decoration:none;border-bottom:1px solid var(--rule)}
-.contact-line a:hover,.contact-line a:focus-visible{border-bottom-color:var(--gold)}
+.contact-line a{color:var(--primary);text-decoration:none;border-bottom:1px solid var(--rule)}
+.contact-line a:hover,.contact-line a:focus-visible{border-bottom-color:var(--accent)}
 
-.gold-rule{height:4px;width:110px;background:var(--gold);margin:40px 0 0}
+/* ---------------- about page header ---------------- */
+.page-head{padding:16px 0 0}
+.page-head h1{
+  font-family:"Libre Franklin",system-ui,sans-serif;
+  font-size:clamp(2rem,4.4vw,2.6rem);
+  font-weight:800;letter-spacing:-.03em;line-height:1;
+  margin:0;color:var(--primary);
+}
+.page-head .role{margin:10px 0 0}
+.page-head::after{
+  content:"";display:block;
+  height:3px;width:74px;background:var(--accent);
+  margin:22px 0 0;
+}
 
 /* ---------------- sections ---------------- */
-section{padding:62px 0 0}
+section{padding:56px 0 0}
+section:first-of-type{padding-top:50px}
 .section-title{
   font-family:"Libre Franklin",system-ui,sans-serif;
   font-size:1.32rem;font-weight:700;letter-spacing:-.018em;
   margin:0 0 22px;
 }
 .section-title.stacked{margin-top:52px}
+
+/* ---------------- about prose ---------------- */
 /* Two columns, so the prose fills the page width the way the
-   Highlights grid above it does, while each line stays a
-   readable length. One column on narrow screens. */
+   Highlights grid does, while each line stays a readable length.
+   One column on narrow screens. */
 .bio-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -161,13 +186,13 @@ section{padding:62px 0 0}
 .highlight-award{
   font-family:"Libre Franklin",system-ui,sans-serif;
   font-size:.78rem;font-weight:600;
-  color:var(--gold-text);
+  color:var(--accent-text);
   margin:0 0 7px;
   display:flex;align-items:center;gap:8px;
 }
 .highlight-award::before{
   content:"";flex:none;
-  width:15px;height:2px;background:var(--gold);
+  width:15px;height:2px;background:var(--accent);
 }
 .highlight-title{
   font-family:"Libre Franklin",system-ui,sans-serif;
@@ -176,7 +201,7 @@ section{padding:62px 0 0}
   margin:0;
 }
 .highlight:hover .highlight-title,
-.highlight:focus-visible .highlight-title{color:var(--indigo)}
+.highlight:focus-visible .highlight-title{color:var(--primary)}
 .highlight-dek{margin:9px 0 0;color:var(--meta);font-size:1rem;line-height:1.55}
 
 /* ---------------- medium filters ---------------- */
@@ -193,9 +218,9 @@ section{padding:62px 0 0}
   padding:7px 15px;border-radius:999px;
   cursor:pointer;
 }
-.filters button:hover{border-color:var(--indigo);color:var(--indigo)}
+.filters button:hover{border-color:var(--primary);color:var(--primary)}
 .filters button[aria-pressed="true"]{
-  background:var(--indigo);border-color:var(--indigo);color:#fff;
+  background:var(--primary);border-color:var(--primary);color:#fff;
 }
 
 /* ---------------- story list ---------------- */
@@ -207,11 +232,11 @@ section{padding:62px 0 0}
   text-decoration:none;
 }
 .story:hover .story-title,
-.story:focus-visible .story-title{color:var(--indigo)}
+.story:focus-visible .story-title{color:var(--primary)}
 .story-topic{
   font-family:"Libre Franklin",system-ui,sans-serif;
   font-size:.76rem;font-weight:600;
-  color:var(--indigo);
+  color:var(--primary);
   margin:0 0 6px;
 }
 /* Headlines run the width of the list. A max-width here would
@@ -230,11 +255,11 @@ section{padding:62px 0 0}
 }
 .listen{
   display:inline-flex;align-items:center;gap:6px;
-  color:var(--indigo);font-weight:600;
+  color:var(--primary);font-weight:600;
 }
 .listen::before{
   content:"";width:0;height:0;
-  border-left:7px solid var(--gold);
+  border-left:7px solid var(--accent);
   border-top:5px solid transparent;
   border-bottom:5px solid transparent;
 }
@@ -248,10 +273,12 @@ section{padding:62px 0 0}
   font-size:.95rem;
   margin:28px 0 0;padding:22px 0 0;border-top:1px solid var(--rule);
 }
-.archive a{color:var(--indigo);font-weight:600;text-decoration:none;border-bottom:2px solid var(--gold)}
+.archive a{color:var(--primary);font-weight:600;text-decoration:none;border-bottom:2px solid var(--accent)}
 
 /* ---------------- experience, education, kit ---------------- */
-.timeline{list-style:none;padding:0;margin:0;max-width:72ch}
+/* No max-width: the 168px date column already narrows the text,
+   so capping the list as well leaves a gap down the right. */
+.timeline{list-style:none;padding:0;margin:0}
 .timeline li{
   display:grid;grid-template-columns:168px 1fr;gap:24px;
   padding:17px 0;border-top:1px solid var(--rule);
@@ -261,7 +288,7 @@ section{padding:62px 0 0}
 .timeline .where{display:block;font-weight:400;color:var(--meta);font-size:.92rem;margin:2px 0 0}
 .timeline .note{margin:7px 0 0;font-size:.98rem;color:var(--meta)}
 
-.kit{list-style:none;padding:0;margin:0;max-width:72ch}
+.kit{list-style:none;padding:0;margin:0}
 .kit li{
   display:grid;grid-template-columns:168px 1fr;gap:24px;
   padding:14px 0;border-top:1px solid var(--rule);
@@ -273,14 +300,14 @@ section{padding:62px 0 0}
   display:inline-block;
   font-family:"Libre Franklin",system-ui,sans-serif;
   font-size:.92rem;font-weight:600;
-  background:var(--indigo);color:#fff;text-decoration:none;
+  background:var(--primary);color:#fff;text-decoration:none;
   padding:13px 24px;border-radius:2px;margin:30px 0 0;
 }
-.btn:hover,.btn:focus-visible{background:var(--indigo-deep)}
+.btn:hover,.btn:focus-visible{background:var(--primary-deep)}
 
 /* ---------------- contact (centred) ---------------- */
 .contact-block{
-  background:var(--indigo);color:#fff;
+  background:var(--primary-deep);color:#fff;
   margin-top:76px;padding:56px 0 48px;
   text-align:center;
 }
@@ -298,8 +325,8 @@ section{padding:62px 0 0}
   gap:14px 28px;
   list-style:none;margin:0;padding:0;font-size:.98rem;
 }
-.contact-block a{color:#fff;text-decoration:none;border-bottom:2px solid var(--gold);padding-bottom:1px}
-.contact-block a:hover,.contact-block a:focus-visible{color:var(--gold)}
+.contact-block a{color:#fff;text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:1px}
+.contact-block a:hover,.contact-block a:focus-visible{color:var(--accent)}
 .contact-block .colophon{
   margin:40px auto 0;
   font-size:.8rem;color:rgba(255,255,255,.5);
@@ -318,11 +345,9 @@ section{padding:62px 0 0}
     grid-template-columns:1fr;
     gap:24px;
     justify-items:start;
-    text-align:left;
-    padding-top:20px;
+    padding-top:12px;
   }
   .headshot{width:150px;height:150px}
-  .beat,.award{max-width:none}
   .highlights{grid-template-columns:1fr;gap:34px}
   .timeline li,.kit li{grid-template-columns:1fr;gap:3px}
   .timeline .note{margin-top:6px}

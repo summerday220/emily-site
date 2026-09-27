@@ -8,16 +8,15 @@ deployment guide.
 ## What's here
 
 ```
-index.html                    the page — bio, experience, education, contact
-style.css                     colors, type, spacing
+index.html                    home page — hero, highlights, recent work
+about.html                    about, experience, education, tools
+style.css                     colors, type, spacing (shared by both pages)
 stories.js                    the stories  ← the only file that needs regular edits
 resume.pdf                    the downloadable resume, personal details removed
 Neil.Emily.Resume.web.docx    editable source for that PDF
 HOW-TO-UPDATE.md              Emily's guide
 README.md                     this
 ```
-
-Still to add: `headshot.jpg`.
 
 To preview locally, double-click `index.html`. It opens in a browser. No
 build step, no dependencies, no install.

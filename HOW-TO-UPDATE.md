@@ -51,14 +51,30 @@ your phone.
 
 Here's what's in the folder:
 
+The site is **two pages**:
+
+- **index.html** — the home page. Your name, photo, Highlights, Recent
+  work.
+- **about.html** — About, Experience, Education, Languages and tools,
+  and the resume download.
+
+They were one page, but it got long. Splitting it means someone landing
+on your site sees your work first without scrolling past your CV.
+
 | File | What it's for |
 |---|---|
 | **stories.js** | Your stories. This is the one you'll open almost every time. |
-| **index.html** | Your name, bio, jobs, education, contact links. |
-| **style.css** | Colors, fonts, spacing. You'll probably never touch it. |
+| **index.html** | Home page: name, photo, contact links. |
+| **about.html** | Your bio, jobs, education, tools. |
+| **style.css** | Colors, fonts, spacing — shared by both pages. |
 | **resume.pdf** | The resume people download. |
 | **Neil.Emily.Resume.web.docx** | The editable version of that resume. |
 | `headshot.jpg` and the story photos | Your images. |
+
+**Two things live on both pages: the menu at the top, and the dark
+contact bar at the bottom.** If you change your email or add a link,
+change it in *both* index.html and about.html so they match. There's a
+note in each file at those spots reminding you.
 
 ---
 
@@ -292,7 +308,10 @@ tall or wide gets cropped at the sides.
 These live in **index.html**. It looks more intimidating than stories.js,
 but you are only ever changing the words *between* the pointy brackets.
 
-To change your bio, find this near the middle:
+Your bio and jobs are in **about.html**. Your name, photo and the
+contact links under it are in **index.html**.
+
+To change your bio, open **about.html** and find:
 
 ```html
 <section id="about" class="bio">
@@ -316,7 +335,7 @@ the spots you're most likely to want.
 
 ## Add a new job
 
-In **index.html**, find `<section id="experience">`. Copy one of these
+In **about.html**, find `<section id="experience">`. Copy one of these
 blocks and paste it above the others:
 
 ```html
@@ -385,17 +404,22 @@ matters.
 Right at the top of **style.css**:
 
 ```css
---indigo:#243a6b;     headings, links, the dark band at the bottom
---gold:#c9891a;       the accent rules and underlines
---gold-text:#8a5c0d;  the darker gold used for the award lines
+--primary:#284858;       headings and links
+--primary-deep:#1d3744;  the dark bar at the bottom
+--accent:#ab633f;        the rules, underlines and award marks
+--accent-text:#8a4c2e;   the same accent, darker, where it's used as text
 ```
 
-Change a code there and it changes everywhere on the site. If you want to
-try a color, search "hex color picker," find one you like, paste in the
-`#` code.
+Change a code there and it changes on both pages at once.
 
-There are two golds because the bright one isn't dark enough to read as
-small text. If you change one, change both to match.
+These colours come from your headshot. Its background sits at one side of
+the colour wheel (cool blue-grey) and your skin tones at the opposite
+side (warm) — that contrast is part of why the photo works. The site uses
+the same pairing, deliberately less saturated than the photo, so the
+photography stays the most colourful thing on the page.
+
+There are two versions of the accent because the brighter one isn't dark
+enough to read as small text. If you change one, change both.
 
 ---
 
@@ -481,9 +505,9 @@ Every version is saved. Nothing is ever lost. Ask Jaz.
 | Add a highlight with a photo | Upload photo, then stories.js | `1. HIGHLIGHTS` |
 | Swap a photo | Upload with the same filename | — |
 | Change my headshot | Upload as `headshot.jpg` | — |
-| Edit my bio | index.html | `id="about"` |
-| Add a job | index.html | `id="experience"` |
-| Change my email or links | index.html | top and bottom |
+| Edit my bio | about.html | `id="about"` |
+| Add a job | about.html | `id="experience"` |
+| Change my email or links | **both** index.html and about.html | top and bottom |
 | Update the resume | Word/Docs → PDF → upload | — |
 | Change colors | style.css | the top |
 | Undo a mistake | GitHub **Commits** → **Revert** | — |
