@@ -358,12 +358,26 @@ section:first-of-type{padding-top:50px}
 
 @view-transition{ navigation:auto }
 
-.topnav    { view-transition-name:sitenav }
-.headshot  { view-transition-name:portrait }
-.hero h1   { view-transition-name:wordmark }
+/* Name each repeated block as ONE unit, never its individual
+   parts. Anything left unnamed is lumped into the page-wide
+   cross-fade, so naming only the photo and the headline left
+   the beat line, the award and the links fading out and back
+   in around them — which reads as a pulse. Naming the whole
+   header carries all of it across untouched. */
+.topnav        { view-transition-name:sitenav }
+.hero          { view-transition-name:pageheader }
 .contact-block { view-transition-name:contactbar }
 
-::view-transition-group(*){ animation-duration:.22s }
+::view-transition-group(*){ animation-duration:.2s }
+
+/* The header and footer are identical on both pages, so there is
+   nothing to animate — hold them perfectly still and let only the
+   content between them change. */
+::view-transition-old(sitenav),   ::view-transition-new(sitenav),
+::view-transition-old(pageheader),::view-transition-new(pageheader),
+::view-transition-old(contactbar),::view-transition-new(contactbar){
+  animation:none; mix-blend-mode:normal;
+}
 
 @media (prefers-reduced-motion:reduce){
   @view-transition{ navigation:none }
