@@ -55,8 +55,8 @@ const HIGHLIGHTS = [
     topic: "Arts & Entertainment",
     medium: "audio",
     listen: "4:58",
-    award: "2026 Regional Murrow Award — Excellence in Sound",
-    dek: "In an on-demand economy, the kind of experience this shop offers is rare — and it has grown a thriving bluegrass community across the region."
+    award: "2026 Regional Murrow Award for Excellence in Sound",
+    dek: "In an on-demand economy, the kind of experience this shop offers is rare, and it has grown a thriving bluegrass community across the region."
   },
 
   {
@@ -69,7 +69,7 @@ const HIGHLIGHTS = [
     topic: "Community",
     medium: "audio",
     listen: "3:24",
-    award: "2026 Regional Murrow Award — Sports Reporting",
+    award: "2026 Regional Murrow Award for Sports Reporting",
     with: "Kenny Cooper",
     dek: "Somewhere behind the bruises and the collisions, skaters in Bucks, Chester and Montgomery counties find acceptance in a full-contact sport."
   },
