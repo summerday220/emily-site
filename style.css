@@ -126,21 +126,6 @@ h1,h2,.award,.beat,.contact-block p{text-wrap:balance}
 .contact-line a{color:var(--primary);text-decoration:none;border-bottom:1px solid var(--rule)}
 .contact-line a:hover,.contact-line a:focus-visible{border-bottom-color:var(--accent)}
 
-/* ---------------- about page header ---------------- */
-.page-head{padding:16px 0 0}
-.page-head h1{
-  font-family:"Libre Franklin",system-ui,sans-serif;
-  font-size:clamp(2rem,4.4vw,2.6rem);
-  font-weight:800;letter-spacing:-.03em;line-height:1;
-  margin:0;color:var(--primary);
-}
-.page-head .role{margin:10px 0 0}
-.page-head::after{
-  content:"";display:block;
-  height:3px;width:74px;background:var(--accent);
-  margin:22px 0 0;
-}
-
 /* ---------------- sections ---------------- */
 section{padding:56px 0 0}
 section:first-of-type{padding-top:50px}

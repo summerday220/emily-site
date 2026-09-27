@@ -20,6 +20,7 @@ exactly how in four clicks.
 - [Add a highlight, with a photo](#add-a-highlight-with-a-photo)
 - [Photos: the one thing worth knowing](#photos-the-one-thing-worth-knowing)
 - [Change your headshot](#change-your-headshot)
+- [Adding your Signal link](#adding-your-signal-link)
 - [Edit your bio, job title or links](#edit-your-bio-job-title-or-links)
 - [Add a new job](#add-a-new-job)
 - [Update your resume](#update-your-resume)
@@ -303,6 +304,40 @@ tall or wide gets cropped at the sides.
 
 ---
 
+## Adding your Signal link
+
+There's a spot ready for it in the dark contact bar at the bottom of
+both pages. It's switched off until you're ready.
+
+**First, get a username link — not a phone link.**
+
+In Signal: **Settings → Profile → Username**. Set a username, then copy
+the link it offers.
+
+This matters. Signal also gives out a `signal.me` link built from your
+phone number, and that link *contains your number* — anyone who sees it
+on your site has it. A username link doesn't. Given what you cover,
+that's the difference worth caring about, and you can change or delete
+a username any time without touching your number.
+
+**Then switch it on.** Open **index.html**, find this near the bottom:
+
+```html
+<!--<li><a href="PASTE-YOUR-SIGNAL-LINK-HERE">Signal</a></li>-->
+```
+
+Delete the `<!--` at the start and the `-->` at the end, and swap
+`PASTE-YOUR-SIGNAL-LINK-HERE` for your link. It should end up looking
+like:
+
+```html
+<li><a href="https://signal.me/#eu/your-actual-link">Signal</a></li>
+```
+
+Commit, then do exactly the same in **about.html**.
+
+---
+
 ## Edit your bio, job title or links
 
 These live in **index.html**. It looks more intimidating than stories.js,
@@ -508,6 +543,8 @@ Every version is saved. Nothing is ever lost. Ask Jaz.
 | Edit my bio | about.html | `id="about"` |
 | Add a job | about.html | `id="experience"` |
 | Change my email or links | **both** index.html and about.html | top and bottom |
+| Turn on my Signal link | **both** index.html and about.html | the contact bar |
+| Turn on my Signal link | **both** index.html and about.html | the contact bar |
 | Update the resume | Word/Docs → PDF → upload | — |
 | Change colors | style.css | the top |
 | Undo a mistake | GitHub **Commits** → **Revert** | — |
