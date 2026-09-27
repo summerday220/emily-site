@@ -32,9 +32,9 @@
                then "Upload files", drag the photo in, commit.
                Then just write the filename: "my-photo.jpg"
            (b) Paste the image URL from the published story.
-           Option (a) is safer — if WHYY ever moves a file, a
-           pasted URL goes blank, but your own copy never does.
-           The four below currently use option (b).
+           Option (a) is safer. A pasted URL goes blank without
+           warning if WHYY ever moves or renames the file, and no
+           one tells you. All five below use option (a).
    alt:    a short description of the photo for screen readers
            and for when an image fails to load.
    dek:    your line or two about the story.
@@ -48,8 +48,8 @@ const HIGHLIGHTS = [
   {
     title: "'Music from the heart': Bluegrass tradition blossoms at a family-owned music shop in Bucks County",
     url: "https://whyy.org/articles/bucks-county-folk-music-shop-bluegrass-tradition/",
-    image: "https://d1fw4rghwibahr.cloudfront.net/wp-content/uploads/2025/01/ben-jarnutowski-banjo-en-2-010325.jpg",
-    alt: "Ben Jarnutowski plays banjo at the music shop.",
+    image: "bluegrass.jpg",
+    alt: "Ben Jarnutowski playing banjo at the music shop.",
     outlet: "WHYY News",
     date: "January 2025",
     topic: "Arts & Entertainment",
@@ -62,7 +62,7 @@ const HIGHLIGHTS = [
   {
     title: "Suburban Philadelphia skaters find community in roller derby: 'The harder you hit them, the more you love them'",
     url: "https://whyy.org/articles/roller-derby-suburbs-community/",
-    image: "https://whyy.org/wp-content/uploads/2025/05/roller-derby-stills-KP-050225-08.jpg",
+    image: "roller-derby.jpg",
     alt: "The Brandywine Roller Derby team at a Tuesday evening practice.",
     outlet: "WHYY News",
     date: "May 2025",
@@ -77,7 +77,7 @@ const HIGHLIGHTS = [
   {
     title: "Upper Darby restricts collaboration with ICE in sweeping ordinance",
     url: "https://whyy.org/articles/upper-darby-pennsylvania-ice-collaboration-ordinance/",
-    image: "https://d1fw4rghwibahr.cloudfront.net/wp-content/uploads/2026/09/upper-darby-ice-legislation-2-1024x567.jpeg",
+    image: "upper-darby-ice.jpg",
     alt: "Residents holding signs reading 'ICE out of Upper Darby' applaud as the township council passes an ordinance.",
     outlet: "WHYY News",
     date: "September 2026",
@@ -90,8 +90,8 @@ const HIGHLIGHTS = [
   {
     title: "Philly's Latin American Book Fair celebrates authors, culture and community",
     url: "https://whyy.org/articles/philadelphia-latin-american-book-fair/",
-    image: "https://d1fw4rghwibahr.cloudfront.net/wp-content/uploads/2026/09/philadelphia-latin-american-book-fair-2026-1-1024x768.jpeg",
-    alt: "An author speaks with a reader at a table during the Latin American Book Fair.",
+    image: "book-fair.jpg",
+    alt: "An author talks with a visitor across a table of books at the Latin American Book Fair.",
     outlet: "WHYY News",
     date: "September 2026",
     topic: "Arts & Entertainment",
@@ -103,8 +103,8 @@ const HIGHLIGHTS = [
   {
     title: "Bucks County Garden of Reflection ceremony remembers 9/11 victims on 25th anniversary",
     url: "https://whyy.org/articles/september-11-bucks-county-garden-reflection-ceremony/",
-    image: "https://d1fw4rghwibahr.cloudfront.net/wp-content/uploads/2026/09/911-ceremony-lower-makefield-7-1024x683.jpeg",
-    alt: "The Garden of Reflection 9/11 Memorial in Lower Makefield Township.",
+    image: "garden-of-reflection.jpg",
+    alt: "The inscribed memorial stone at the Garden of Reflection in Lower Makefield Township.",
     outlet: "WHYY News",
     date: "September 2026",
     topic: "Community",
