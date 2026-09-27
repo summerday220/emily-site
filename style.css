@@ -338,3 +338,33 @@ section:first-of-type{padding-top:50px}
   .timeline .note{margin-top:6px}
   .contact-block{padding:44px 0 38px}
 }
+
+/* ============================================================
+   Smooth the jump between the two pages.
+
+   Without this the browser tears down one page and paints the
+   next from blank, so you get a white flash and the headline
+   flickers in the fallback font before Libre Franklin loads.
+
+   navigation: auto tells the browser to hold a picture of the
+   old page until the new one is ready, then cross-fade. Naming
+   the header parts goes further: they are identical on both
+   pages, so the browser carries them across untouched and only
+   the content below changes. The header stops blinking at all.
+
+   Browsers that don't support this just navigate the old way.
+   Nothing breaks, it's simply not as smooth.
+   ============================================================ */
+
+@view-transition{ navigation:auto }
+
+.topnav    { view-transition-name:sitenav }
+.headshot  { view-transition-name:portrait }
+.hero h1   { view-transition-name:wordmark }
+.contact-block { view-transition-name:contactbar }
+
+::view-transition-group(*){ animation-duration:.22s }
+
+@media (prefers-reduced-motion:reduce){
+  @view-transition{ navigation:none }
+}
