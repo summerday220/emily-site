@@ -198,11 +198,6 @@ if she edits and re-exports, the same four things need to stay out.
 
 ## Things to confirm with Emily
 
-- **Job title.** Currently "Suburban reporter for Billy Penn at WHYY." Her
-  WHYY author page says "WHYY News reporter covering Bucks and Montgomery
-  counties"; her resume says WHYY News. "Billy Penn at WHYY" is WHYY's own
-  name for the newsroom, so it's accurate and names both — but she knows
-  which editors should see.
 - **Email.** Using `emilybneil@gmail.com` rather than the WHYY address, so
   the site outlives any one job. One-line change either way.
 - **The About section.** Written to sound like her, but it isn't hers. She

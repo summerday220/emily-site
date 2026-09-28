@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emily Neil</title>
-<meta name="description" content="Emily Neil is a bilingual multimedia journalist reporting for Billy Penn at WHYY, covering Bucks and Montgomery counties.">
+<meta name="description" content="Emily Neil is a bilingual multimedia journalist reporting for WHYY News, covering Bucks and Montgomery counties.">
 <meta property="og:title" content="Emily Neil">
-<meta property="og:description" content="Bilingual multimedia journalist reporting for Billy Penn at WHYY, covering Bucks and Montgomery counties.">
+<meta property="og:description" content="Bilingual multimedia journalist reporting for WHYY News, covering Bucks and Montgomery counties.">
 <meta property="og:type" content="profile">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,10 +95,10 @@
     <h2 class="section-title">About</h2>
     <div class="bio-grid">
       <div>
-        <p class="lede">I'm a bilingual multimedia journalist covering Bucks and Montgomery counties as a suburban reporter for Billy Penn at WHYY, the public media newsroom serving the Philadelphia region. Previously, I was a reporter and editor at AL DÍA News, a bilingual print and digital news organization based in Philadelphia, and a communications officer for SERES, a Guatemalan non-profit focused on youth leadership and sustainability education in Guatemala and El Salvador.</p>
+        <p class="lede">I'm a bilingual multimedia journalist covering Bucks and Montgomery counties as a suburban reporter for WHYY News, the public media newsroom serving the Philadelphia region. Previously, I was a reporter and editor at AL DÍA News, a bilingual print and digital news organization based in Philadelphia, and a communications officer for SERES, a Guatemalan non-profit focused on youth leadership and sustainability education in Guatemala and El Salvador.</p>
       </div>
       <div>
-        <p>My work has appeared in WHYY News, Billy Penn, The New York Times, The Philadelphia Citizen, The Trace, Religion News Service, Blind Magazine, Generocity, GridPhilly, IJNET and ¡Presente! Media.</p>
+        <p>My work has appeared in WHYY News, The New York Times, The Philadelphia Citizen, The Trace, Religion News Service, Blind Magazine, Generocity, GridPhilly, IJNET and ¡Presente! Media.</p>
         <p>I was a 2022–23 Religion News Service and Interfaith America fellow, and I've edited for Global Press Journal alongside reporters based around the world. Since 2020 I've co-hosted <em>El Café de la Tarde</em>, a weekly Spanish-language show on Philatinos Radio in South Philadelphia.</p>
       </div>
     </div>
@@ -118,7 +118,7 @@
       <li>
         <span class="when">Mar 2024 – present</span>
         <div>
-          <p class="what">Suburban reporter<span class="where">Billy Penn at WHYY, Philadelphia</span></p>
+          <p class="what">Suburban reporter<span class="where">WHYY News, Philadelphia</span></p>
           <p class="note">Two to three stories a week for radio and web across Bucks and Montgomery counties: reporting, writing both scripts, recording and producing the audio, and shooting photos. General assignment on Saturdays.</p>
         </div>
       </li>
@@ -140,7 +140,7 @@
         <span class="when">Feb 2020 – Mar 2024</span>
         <div>
           <p class="what">Freelance journalist<span class="where">Philadelphia</span></p>
-          <p class="note">Religion coverage for Religion News Service as a 2022–23 RNS and Interfaith America fellow. Reported on gun violence resources in Philadelphia for The Trace's Up the Block. Bylines in Billy Penn, The New York Times, The Philadelphia Citizen, Blind Magazine, Generocity, GridPhilly, IJNET, ¡Presente! Media and WHYY News.</p>
+          <p class="note">Religion coverage for Religion News Service as a 2022–23 RNS and Interfaith America fellow. Reported on gun violence resources in Philadelphia for The Trace's Up the Block. Bylines in The New York Times, The Philadelphia Citizen, Blind Magazine, Generocity, GridPhilly, IJNET, ¡Presente! Media and WHYY News.</p>
         </div>
       </li>
       <li>
@@ -332,6 +332,82 @@
   });
 
   render('all');
+})();
+</script>
+
+<script>
+/* ===================== THE TABS =====================
+   Work and About are two panels inside one page. Switching tabs
+   swaps the panel below the header, so the header itself is never
+   rebuilt and never flickers — the frozen-pane effect.
+
+   The address bar still changes (#work / #about), so links,
+   bookmarks, refresh and the browser's back button all behave the
+   way people expect.
+
+   EMILY: nothing here needs touching. If JavaScript is ever turned
+   off, none of this runs and both panels simply show one after the
+   other — the page still reads correctly, just as one long scroll.
+*/
+(function () {
+  const views = {
+    work:  document.getElementById('view-work'),
+    about: document.getElementById('view-about')
+  };
+  if (!views.work || !views.about) return;   // markup changed: leave both showing
+
+  const tabs = Array.prototype.slice.call(
+    document.querySelectorAll('.topnav a[data-view]'));
+
+  function show(name, opts) {
+    opts = opts || {};
+    if (!views[name]) name = 'work';
+
+    for (const k in views) views[k].hidden = (k !== name);
+
+    tabs.forEach(t => {
+      if (t.dataset.view === name) t.setAttribute('aria-current', 'page');
+      else t.removeAttribute('aria-current');
+    });
+
+    // Don't yank the page on first load — someone may have arrived
+    // on a #contact link and be looking at the footer already.
+    if (opts.scroll && window.scrollY > 0) {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    // Send the screen reader to the heading of the panel that just
+    // opened, the way a real page load would.
+    if (opts.focus) {
+      const h = views[name].querySelector('h2');
+      if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+    }
+  }
+
+  // Only #work and #about name a panel, and no hash at all means
+  // Work — that's the entry the back button returns to. Anything
+  // else (#contact) is an ordinary anchor to the footer, which
+  // shows on both tabs, so it must not count as a tab change.
+  function fromHash() {
+    const h = location.hash.replace('#', '');
+    if (h === '' || h === 'work') return 'work';
+    if (h === 'about') return 'about';
+    return null;
+  }
+
+  tabs.forEach(t => t.addEventListener('click', e => {
+    e.preventDefault();
+    const name = t.dataset.view;
+    history.pushState({ view: name }, '', '#' + name);
+    show(name, { scroll: true, focus: true });
+  }));
+
+  window.addEventListener('popstate', () => {
+    const v = fromHash();
+    if (v) show(v, { scroll: true });
+  });
+
+  show(fromHash() || 'work', {});
 })();
 </script>
 </body>
