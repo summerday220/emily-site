@@ -43,7 +43,7 @@
     <img class="headshot" src="headshot.jpg" alt="Emily Neil" width="600" height="600">
     <div>
       <h1>Emily Neil</h1>
-      <p class="beat">Covering Bucks and Montgomery counties for Billy Penn at WHYY. Reporting around Philadelphia since 2018.</p>
+      <p class="beat">Covering Bucks and Montgomery counties for WHYY News. Reporting around Philadelphia since 2018.</p>
       <!-- The categories are named on each winning story, so this
            line doesn't repeat them. The &nbsp; keep the award's name
            from splitting across lines. -->
@@ -233,40 +233,43 @@
       ${s.listen ? `<span class="listen">Listen ${esc(s.listen)}</span>` : ''}
     </p>`;
 
+  // One featured card, used by Highlights and by every themed
+  // section below it. withPhoto is decided per section, not per
+  // card: a row with one photo and one blank panel looks broken,
+  // so a section shows photos only once every story in it has
+  // one. Add the missing image and the section becomes a photo
+  // grid on its own.
+  const card = (h, withPhoto) => `
+    <a class="highlight" href="${esc(h.url)}">
+      ${withPhoto ? `<div class="highlight-photo">
+        <img src="${esc(h.image)}" alt="${esc(h.alt || '')}" loading="lazy">
+      </div>` : ''}
+      <div class="highlight-text">
+        ${h.award ? `<p class="highlight-award">${esc(h.award)}</p>` : ''}
+        ${h.topic ? `<p class="story-topic">${esc(h.topic)}</p>` : ''}
+        <h3 class="highlight-title">${esc(h.title)}</h3>
+        ${h.dek ? `<p class="highlight-dek">${esc(h.dek)}</p>` : ''}
+        ${meta(h)}
+      </div>
+    </a>`;
+
   /* ---------- highlights ---------- */
   const grid = document.getElementById('highlight-grid');
   if (!HL.length) {
     document.getElementById('highlights').hidden = true;
   } else {
-    grid.innerHTML = HL.map(h => `
-      <a class="highlight" href="${esc(h.url)}">
-        <div class="highlight-photo">
-          ${h.image ? `<img src="${esc(h.image)}" alt="${esc(h.alt || '')}" loading="lazy">` : ''}
-        </div>
-        <div class="highlight-text">
-          ${h.award ? `<p class="highlight-award">${esc(h.award)}</p>` : ''}
-          ${h.topic ? `<p class="story-topic">${esc(h.topic)}</p>` : ''}
-          <h3 class="highlight-title">${esc(h.title)}</h3>
-          ${h.dek ? `<p class="highlight-dek">${esc(h.dek)}</p>` : ''}
-          ${meta(h)}
-        </div>
-      </a>
-    `).join('');
+    grid.innerHTML = HL.map(s => card(s, !!s.image)).join('');
   }
 
   /* ---------- themed collections ---------- */
+  // Same card as Highlights, so a themed section reads as another
+  // shelf of featured work rather than a different component.
   document.getElementById('collections').innerHTML = COLS.map(c => `
     <section class="collection">
       <h2 class="section-title">${esc(c.title)}</h2>
       ${c.note ? `<p class="collection-note">${esc(c.note)}</p>` : ''}
-      <div class="collection-list">
-        ${(c.stories || []).map(s => `
-          <article class="featured">
-            <h3 class="featured-title"><a href="${esc(s.url)}">${esc(s.title)}</a></h3>
-            ${s.dek ? `<p class="featured-dek">${esc(s.dek)}</p>` : ''}
-            ${meta(s)}
-          </article>
-        `).join('')}
+      <div class="highlights">
+        ${(c.stories || []).map(s => card(s, (c.stories || []).every(x => x.image))).join('')}
       </div>
     </section>
   `).join('');

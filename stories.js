@@ -67,44 +67,6 @@ const HIGHLIGHTS = [
     award: "2026 Regional Murrow Award for Sports Reporting",
     with: "Kenny Cooper",
     dek: "Somewhere behind the bruises and the collisions, skaters in Bucks, Chester and Montgomery counties find acceptance in a full-contact sport."
-  },
-
-  {
-    title: "Upper Darby restricts collaboration with ICE in sweeping ordinance",
-    url: "https://whyy.org/articles/upper-darby-pennsylvania-ice-collaboration-ordinance/",
-    image: "upper-darby-ice.jpg",
-    alt: "Residents holding signs reading 'ICE out of Upper Darby' applaud as the township council passes an ordinance.",
-    outlet: "WHYY News",
-    date: "September 2026",
-    topic: "Immigration",
-    medium: "audio",
-    listen: "1:08",
-    dek: "Upper Darby passed one of the region's most expansive limits on cooperation with federal immigration enforcement. Nearly a quarter of the township's residents are foreign-born, and speakers packed the council meeting to say so."
-  },
-
-  {
-    title: "Philly's Latin American Book Fair celebrates authors, culture and community",
-    url: "https://whyy.org/articles/philadelphia-latin-american-book-fair/",
-    image: "book-fair.jpg",
-    alt: "An author talks with a visitor across a table of books at the Latin American Book Fair.",
-    outlet: "WHYY News",
-    date: "September 2026",
-    topic: "Arts & Culture",
-    medium: "audio",
-    listen: "1:03",
-    dek: "The fair's eighth edition filled the Kimmel Center with author meet-and-greets, performances, and the launch of a bilingual poetry press."
-  },
-
-  {
-    title: "Bucks County Garden of Reflection ceremony remembers 9/11 victims on 25th anniversary",
-    url: "https://whyy.org/articles/september-11-bucks-county-garden-reflection-ceremony/",
-    image: "garden-of-reflection.jpg",
-    alt: "The inscribed memorial stone at the Garden of Reflection in Lower Makefield Township.",
-    outlet: "WHYY News",
-    date: "September 2026",
-    topic: "Community",
-    medium: "article",
-    dek: "Twenty-five years on, first responders and the people who lost someone gathered in Lower Makefield to say the names out loud again."
   }
 
 ];
@@ -125,19 +87,26 @@ const HIGHLIGHTS = [
 const COLLECTIONS = [
 
   {
-    title: "Immigration coverage",
-    note: "Tracking federal immigration enforcement across the Philadelphia suburbs: the municipalities limiting cooperation with ICE, the courts testing detention policy, and the state's largest detention center.",
+    title: "Immigration",
+    note: "Tracking federal immigration enforcement across the Philadelphia suburbs: the municipalities limiting cooperation with ICE, and the state's largest detention center.",
     stories: [
       {
-        title: "ICE mandatory detention policy is unlawful, federal appeals court in Philly rules",
-        url: "https://whyy.org/articles/immigration-mandatory-detention-policy-unlawful-appeals-court-ruling-philadelphia/",
+        title: "Upper Darby restricts collaboration with ICE in sweeping ordinance",
+        url: "https://whyy.org/articles/upper-darby-pennsylvania-ice-collaboration-ordinance/",
+        image: "upper-darby-ice.jpg",
+        alt: "Residents holding signs reading 'ICE out of Upper Darby' applaud as the township council passes an ordinance.",
         outlet: "WHYY News",
-        date: "August 2026",
+        date: "September 2026",
         medium: "audio",
-        listen: "1:06",
-        dek: "The Third Circuit struck down the administration's policy of holding undocumented immigrants without bond hearings."
+        listen: "1:08",
+        dek: "Upper Darby passed one of the region's most expansive limits on cooperation with federal immigration enforcement. Nearly a quarter of the township's residents are foreign-born, and speakers packed the council meeting to say so."
       },
       {
+        /* EMILY: this card has no photo yet. Save the lead image from
+           the story, upload it, and add a line here:
+             image: "moshannon.jpg",
+             alt: "The exterior of the Moshannon Valley Processing Center.",
+           Until then the card shows a plain panel instead of a photo. */
         title: "Pa. Dems, immigrant rights groups push for info on Moshannon ICE detention center contract as county votes for extension",
         url: "https://whyy.org/articles/moshannon-ice-detention-center-contract-extension-vote/",
         outlet: "WHYY News",
@@ -145,29 +114,6 @@ const COLLECTIONS = [
         medium: "audio",
         listen: "1:53",
         dek: "Clearfield County commissioners approved a six-month extension at Pennsylvania's largest ICE detention facility, over calls for the contract to be made public."
-      }
-    ]
-  },
-
-  {
-    title: "Election 2026",
-    note: "Race-by-race coverage of the Bucks County contests on the November ballot, including one of the most closely watched congressional seats in the country.",
-    stories: [
-      {
-        title: "Pa. election 2026: What to know about the 1st Congressional District race in Bucks County",
-        url: "https://whyy.org/articles/election-2026-pennsylvania-1st-congressional-district-voter-guide/",
-        outlet: "WHYY News",
-        date: "September 2026",
-        medium: "article",
-        dek: "Republican incumbent Brian Fitzpatrick faces Democrat Bob Harvie in what is widely seen as his most competitive challenge yet."
-      },
-      {
-        title: "Pa. election 2026: What Bucks County voters should know about the 6th Senate District race between Frank Farry and Eileen Hartnett Albillar",
-        url: "https://whyy.org/articles/election-2026-pennsylvania-senate-sixth-district-voter-guide/",
-        outlet: "WHYY News",
-        date: "September 2026",
-        medium: "article",
-        dek: "A face-off that could flip the balance of power in the Pennsylvania state Senate."
       }
     ]
   }
@@ -183,7 +129,7 @@ const COLLECTIONS = [
    gets its own button the moment you use it, and a topic you
    stop using disappears.
 
-   topic:  "Immigration" | "Elections" | "Community" |
+   topic:  "Immigration" | "Politics" | "Community" |
            "Arts & Culture" | "Courts & Law" | "Weather"
            — or anything else you like. Keep the spelling
            consistent or you'll get two buttons for one topic.
@@ -232,22 +178,22 @@ const STORIES = [
   {
     title: "Pa. election 2026: What to know about the 144th House District race in Bucks County",
     url: "https://whyy.org/articles/election-2026-pennsylvania-senate-144th-district-voter-guide/",
-    outlet: "WHYY News", date: "September 2026", topic: "Elections", medium: "article"
+    outlet: "WHYY News", date: "September 2026", topic: "Politics", medium: "article"
   },
   {
     title: "Pa. election 2026: What to know about the 1st Congressional District race in Bucks County",
     url: "https://whyy.org/articles/election-2026-pennsylvania-1st-congressional-district-voter-guide/",
-    outlet: "WHYY News", date: "September 2026", topic: "Elections", medium: "article"
+    outlet: "WHYY News", date: "September 2026", topic: "Politics", medium: "article"
   },
   {
     title: "Pa. election 2026: What to know about the 142nd House District race in Bucks County",
     url: "https://whyy.org/articles/election-2026-pennsylvania-senate-142nd-district-voter-guide/",
-    outlet: "WHYY News", date: "September 2026", topic: "Elections", medium: "article"
+    outlet: "WHYY News", date: "September 2026", topic: "Politics", medium: "article"
   },
   {
     title: "Pa. election 2026: What Bucks County voters should know about the 6th Senate District race between Frank Farry and Eileen Hartnett Albillar",
     url: "https://whyy.org/articles/election-2026-pennsylvania-senate-sixth-district-voter-guide/",
-    outlet: "WHYY News", date: "September 2026", topic: "Elections", medium: "article"
+    outlet: "WHYY News", date: "September 2026", topic: "Politics", medium: "article"
   },
 
   /* ---------- August 2026 ---------- */
@@ -269,12 +215,12 @@ const STORIES = [
   {
     title: "Pa. election 2026: How to request, fill out and return your mail ballot",
     url: "https://whyy.org/articles/election-2026-pennsylvania-mail-ballot-how-to/",
-    outlet: "WHYY News", date: "August 2026", topic: "Elections", medium: "article"
+    outlet: "WHYY News", date: "August 2026", topic: "Politics", medium: "article"
   },
   {
     title: "Montgomery County approves new policy for fixing mail ballot errors",
     url: "https://whyy.org/articles/montgomery-county-pennsylvania-mail-ballot-errors-policy-chance/",
-    outlet: "WHYY News", date: "August 2026", topic: "Elections", medium: "article"
+    outlet: "WHYY News", date: "August 2026", topic: "Politics", medium: "article"
   },
   {
     title: "After deadly earthquake, Philadelphia's Colombian community mobilizes recovery efforts",
