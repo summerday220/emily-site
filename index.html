@@ -283,10 +283,13 @@
       return;
     }
 
+    // Only the headline is a link. Wrapping the whole row made the
+    // entire strip clickable, so a stray click anywhere near a story
+    // opened it.
     list.innerHTML = shown.map(s => `
-      <a class="story" href="${esc(s.url)}">
+      <article class="story">
         ${s.topic ? `<p class="story-topic">${esc(s.topic)}</p>` : ''}
-        <h3 class="story-title">${esc(s.title)}</h3>
+        <h3 class="story-title"><a href="${esc(s.url)}">${esc(s.title)}</a></h3>
         ${s.dek ? `<p class="story-dek">${esc(s.dek)}</p>` : ''}
         <p class="story-meta">
           <span>${esc(s.outlet)}</span>
@@ -294,7 +297,7 @@
           ${s.with ? `<span>with ${esc(s.with)}</span>` : ''}
           ${s.listen ? `<span class="listen">Listen ${esc(s.listen)}</span>` : ''}
         </p>
-      </a>
+      </article>
     `).join('');
   }
 
