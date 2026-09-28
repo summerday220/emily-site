@@ -199,10 +199,12 @@ section:first-of-type{padding-top:50px}
 /* A themed section is another shelf of the same featured cards,
    so it reuses .highlights and .highlight entirely. Only the
    standfirst under the heading is new. */
+/* No max-width: the note sits above the two-column grid and should
+   run the same width the grid does. Capping it left a ragged stop
+   partway across with empty page to the right. */
 .collection-note{
   color:var(--meta);
   margin:-8px 0 26px;
-  max-width:70ch;
 }
 /* A section shows photos only when every story in it has one, so
    there is never a card with a blank panel beside a photographed
