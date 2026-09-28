@@ -102,13 +102,10 @@ const COLLECTIONS = [
         dek: "Upper Darby passed one of the region's most expansive limits on cooperation with federal immigration enforcement. Nearly a quarter of the township's residents are foreign-born, and speakers packed the council meeting to say so."
       },
       {
-        /* EMILY: this card has no photo yet. Save the lead image from
-           the story, upload it, and add a line here:
-             image: "moshannon.jpg",
-             alt: "The exterior of the Moshannon Valley Processing Center.",
-           Until then the card shows a plain panel instead of a photo. */
         title: "Pa. Dems, immigrant rights groups push for info on Moshannon ICE detention center contract as county votes for extension",
         url: "https://whyy.org/articles/moshannon-ice-detention-center-contract-extension-vote/",
+        image: "moshannon.jpg",
+        alt: "The entrance sign for the GEO Moshannon Valley Processing Center at 555 Geo Drive.",
         outlet: "WHYY News",
         date: "September 2026",
         medium: "audio",
