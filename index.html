@@ -66,8 +66,15 @@
     <div class="highlights" id="highlight-grid"></div>
   </section>
 
+  <!-- ===================== THEMED COLLECTIONS =====================
+       Built from the COLLECTIONS list in stories.js. Add or remove
+       a whole section by editing that list — nothing to change here.
+  -->
+  <div id="collections"></div>
+
   <!-- ===================== RECENT WORK =====================
-       Built from the STORIES list in stories.js.
+       Built from the STORIES list in stories.js. Filters are by
+       topic and build themselves from the topics actually used.
   -->
   <section id="work">
     <h2 class="section-title">Recent work</h2>
@@ -195,12 +202,10 @@
       <li><a href="https://www.instagram.com/e.b.neil/">Instagram</a></li>
       <li><a href="https://www.linkedin.com/in/emily-neil-283810126/">LinkedIn</a></li>
       <li><a href="https://whyy.org/person/emily-neil/">Archive at WHYY</a></li>
-      <!-- EMILY: your Signal link goes here when you want one. Delete the
-           two comment markers around the next line and paste your link in.
-           Use a Signal USERNAME link (in Signal: Settings > Profile >
-           Username), NOT a signal.me link built from your phone number —
-           that kind puts your number on the open web. -->
-      <!--<li><a href="PASTE-YOUR-SIGNAL-LINK-HERE">Signal</a></li>-->
+      <!-- A Signal username, not a phone number. Safe to publish:
+           it reveals nothing about her number, and she can change
+           or delete it any time without changing her number. -->
+      <li class="signal">Signal: eneil.34</li>
     </ul>
     <p class="colophon">© 2026 Emily Neil</p>
   </div>
@@ -214,22 +219,26 @@
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g,
     c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-  const LABELS = {
-    article: 'Articles',
-    audio:   'Audio',
-    photo:   'Photos',
-    essay:   'Essays',
-    video:   'Video'
-  };
+  const HL   = (typeof HIGHLIGHTS  !== 'undefined' ? HIGHLIGHTS  : []);
+  const COLS = (typeof COLLECTIONS !== 'undefined' ? COLLECTIONS : []);
+  const ALL  = (typeof STORIES     !== 'undefined' ? STORIES     : []);
+
+  // The small grey line under a headline: outlet, date, co-byline,
+  // runtime. Same shape everywhere a story appears.
+  const meta = s => `
+    <p class="story-meta">
+      <span>${esc(s.outlet)}</span>
+      <span>${esc(s.date)}</span>
+      ${s.with   ? `<span>with ${esc(s.with)}</span>` : ''}
+      ${s.listen ? `<span class="listen">Listen ${esc(s.listen)}</span>` : ''}
+    </p>`;
 
   /* ---------- highlights ---------- */
   const grid = document.getElementById('highlight-grid');
-  const highlights = (typeof HIGHLIGHTS !== 'undefined' ? HIGHLIGHTS : []);
-
-  if (!highlights.length) {
+  if (!HL.length) {
     document.getElementById('highlights').hidden = true;
   } else {
-    grid.innerHTML = highlights.map(h => `
+    grid.innerHTML = HL.map(h => `
       <a class="highlight" href="${esc(h.url)}">
         <div class="highlight-photo">
           ${h.image ? `<img src="${esc(h.image)}" alt="${esc(h.alt || '')}" loading="lazy">` : ''}
@@ -239,44 +248,59 @@
           ${h.topic ? `<p class="story-topic">${esc(h.topic)}</p>` : ''}
           <h3 class="highlight-title">${esc(h.title)}</h3>
           ${h.dek ? `<p class="highlight-dek">${esc(h.dek)}</p>` : ''}
-          <p class="story-meta">
-            <span>${esc(h.outlet)}</span>
-            <span>${esc(h.date)}</span>
-            ${h.with ? `<span>with ${esc(h.with)}</span>` : ''}
-            ${h.listen ? `<span class="listen">Listen ${esc(h.listen)}</span>` : ''}
-          </p>
+          ${meta(h)}
         </div>
       </a>
     `).join('');
   }
 
+  /* ---------- themed collections ---------- */
+  document.getElementById('collections').innerHTML = COLS.map(c => `
+    <section class="collection">
+      <h2 class="section-title">${esc(c.title)}</h2>
+      ${c.note ? `<p class="collection-note">${esc(c.note)}</p>` : ''}
+      <div class="collection-list">
+        ${(c.stories || []).map(s => `
+          <article class="featured">
+            <h3 class="featured-title"><a href="${esc(s.url)}">${esc(s.title)}</a></h3>
+            ${s.dek ? `<p class="featured-dek">${esc(s.dek)}</p>` : ''}
+            ${meta(s)}
+          </article>
+        `).join('')}
+      </div>
+    </section>
+  `).join('');
+
   /* ---------- recent work ---------- */
   const list    = document.getElementById('stories');
   const filters = document.getElementById('filters');
 
-  // A story already shown up top as a highlight is skipped here,
-  // so the page never lists the same piece twice. That means a
-  // story can safely live in both lists in stories.js.
-  const featured = new Set(highlights.map(h => h.url));
-  const stories  = (typeof STORIES !== 'undefined' ? STORIES : [])
-    .filter(s => !featured.has(s.url));
+  // Anything already featured above is skipped here, so no story
+  // appears twice. STORIES can stay a complete record.
+  const featured = new Set([
+    ...HL.map(h => h.url),
+    ...COLS.flatMap(c => (c.stories || []).map(s => s.url))
+  ]);
+  const stories = ALL.filter(s => !featured.has(s.url));
 
-  // Build the filter buttons from the mediums actually in use,
-  // so Emily never ends up with a button that leads nowhere.
-  const present = Object.keys(LABELS).filter(m => stories.some(s => s.medium === m));
+  // Filter buttons come from the topics actually in use, busiest
+  // beat first, so the list orders itself as her work shifts.
+  const counts = {};
+  stories.forEach(s => { if (s.topic) counts[s.topic] = (counts[s.topic] || 0) + 1; });
+  const topics = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
 
-  if (present.length > 1) {
+  if (topics.length > 1) {
     filters.innerHTML =
-      `<li><button type="button" data-medium="all" aria-pressed="true">All</button></li>` +
-      present.map(m =>
-        `<li><button type="button" data-medium="${m}" aria-pressed="false">${LABELS[m]}</button></li>`
+      `<li><button type="button" data-topic="all" aria-pressed="true">All</button></li>` +
+      topics.map(t =>
+        `<li><button type="button" data-topic="${esc(t)}" aria-pressed="false">${esc(t)}</button></li>`
       ).join('');
   } else {
     filters.hidden = true;
   }
 
-  function render(medium) {
-    const shown = medium === 'all' ? stories : stories.filter(s => s.medium === medium);
+  function render(topic) {
+    const shown = topic === 'all' ? stories : stories.filter(s => s.topic === topic);
 
     if (!shown.length) {
       list.innerHTML = '<p class="empty">Nothing in this category yet.</p>';
@@ -291,12 +315,7 @@
         ${s.topic ? `<p class="story-topic">${esc(s.topic)}</p>` : ''}
         <h3 class="story-title"><a href="${esc(s.url)}">${esc(s.title)}</a></h3>
         ${s.dek ? `<p class="story-dek">${esc(s.dek)}</p>` : ''}
-        <p class="story-meta">
-          <span>${esc(s.outlet)}</span>
-          <span>${esc(s.date)}</span>
-          ${s.with ? `<span>with ${esc(s.with)}</span>` : ''}
-          ${s.listen ? `<span class="listen">Listen ${esc(s.listen)}</span>` : ''}
-        </p>
+        ${meta(s)}
       </article>
     `).join('');
   }
@@ -306,65 +325,10 @@
     if (!btn) return;
     filters.querySelectorAll('button').forEach(b =>
       b.setAttribute('aria-pressed', String(b === btn)));
-    render(btn.dataset.medium);
+    render(btn.dataset.topic);
   });
 
   render('all');
-})();
-</script>
-
-<script>
-/* ============================================================
-   Work / About without a page load.
-
-   The header, the menu and the contact bar are one set of
-   elements that never get rebuilt — clicking a tab only swaps
-   the block between them. That's why nothing flickers: there is
-   no new page, so there is nothing to redraw.
-
-   The address bar still changes to #about, so the link is
-   shareable and the browser's back button works.
-
-   With JavaScript off, both sections just show one after the
-   other. Nothing is hidden behind a script.
-   ============================================================ */
-(function () {
-  const views = { work: document.getElementById('view-work'),
-                  about: document.getElementById('view-about') };
-  const tabs  = [...document.querySelectorAll('.topnav a[data-view]')];
-  if (!views.work || !views.about) return;
-
-  function show(name, moveFocus) {
-    if (!views[name]) name = 'work';
-    for (const k in views) views[k].hidden = (k !== name);
-    tabs.forEach(t => {
-      const on = t.dataset.view === name;
-      if (on) t.setAttribute('aria-current', 'page');
-      else    t.removeAttribute('aria-current');
-    });
-    // Land at the top of the new section rather than wherever the
-    // last one was scrolled to. No smooth scrolling: this should
-    // feel like a swap, not a journey.
-    if (window.scrollY > 0) window.scrollTo({ top: 0, behavior: 'instant' });
-
-    // Send screen readers and keyboard users into the new content.
-    if (moveFocus) {
-      const h = views[name].querySelector('h2');
-      if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
-    }
-  }
-
-  tabs.forEach(t => t.addEventListener('click', e => {
-    e.preventDefault();
-    const name = t.dataset.view;
-    if (location.hash !== '#' + name) history.pushState({ view: name }, '', '#' + name);
-    show(name, true);
-  }));
-
-  addEventListener('popstate', () => show(location.hash.slice(1), false));
-
-  // Deep link: /#about opens straight on About.
-  show(location.hash.slice(1) || 'work', false);
 })();
 </script>
 </body>

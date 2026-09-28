@@ -195,7 +195,46 @@ section:first-of-type{padding-top:50px}
 }
 .highlight-dek{margin:9px 0 0;color:var(--meta);font-size:1rem;line-height:1.55}
 
-/* ---------------- medium filters ---------------- */
+/* ---------------- themed collections ---------------- */
+/* Between the photo highlights and the plain recent-work list:
+   featured enough to stand out, without needing a photo for
+   every story. Modelled on how newsroom portfolios group work
+   by beat. */
+.collection-note{
+  color:var(--meta);
+  margin:-8px 0 26px;
+  max-width:70ch;
+}
+.collection-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:26px 40px;
+}
+.featured{
+  padding:20px 22px;
+  background:var(--surface);
+  border-left:3px solid var(--accent);
+  border-radius:2px;
+}
+.featured-title{
+  font-family:"Libre Franklin",system-ui,sans-serif;
+  font-size:1.08rem;font-weight:700;line-height:1.3;
+  letter-spacing:-.01em;
+  margin:0;
+}
+.featured-title a{color:inherit;text-decoration:none}
+.featured-title a:hover,
+.featured-title a:focus-visible{
+  color:var(--primary);
+  text-decoration:underline;
+  text-decoration-thickness:2px;
+  text-underline-offset:3px;
+  text-decoration-color:var(--accent);
+}
+.featured-dek{margin:9px 0 0;color:var(--meta);font-size:.98rem;line-height:1.55}
+.featured .story-meta{margin-top:10px}
+
+/* ---------------- topic filters ---------------- */
 .filters{
   font-family:"Libre Franklin",system-ui,sans-serif;
   display:flex;flex-wrap:wrap;gap:8px;
@@ -327,6 +366,8 @@ section:first-of-type{padding-top:50px}
 }
 .contact-block a{color:#fff;text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:1px}
 .contact-block a:hover,.contact-block a:focus-visible{color:var(--accent)}
+/* Signal is a username you type into the app, not a link. */
+.contact-block .signal{color:rgba(255,255,255,.88)}
 .contact-block .colophon{
   margin:40px auto 0;
   font-size:.8rem;color:rgba(255,255,255,.5);
@@ -349,6 +390,7 @@ section:first-of-type{padding-top:50px}
   }
   .headshot{width:150px;height:150px}
   .highlights{grid-template-columns:1fr;gap:34px}
+  .collection-list{grid-template-columns:1fr;gap:20px}
   .timeline li,.kit li{grid-template-columns:1fr;gap:3px}
   .timeline .note{margin-top:6px}
   .contact-block{padding:44px 0 38px}
